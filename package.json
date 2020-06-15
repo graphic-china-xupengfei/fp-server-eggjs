@@ -1,0 +1,65 @@
+{
+  "name": "my_first_midway_project",
+  "version": "1.0.0",
+  "description": "{{description}}",
+  "private": true,
+  "dependencies": {
+    "@shopify/koa-shopify-auth": "^3.1.63",
+    "@typescript-eslint/eslint-plugin": "^3.2.0",
+    "@typescript-eslint/parser": "^3.2.0",
+    "egg-graphql": "^2.8.0",
+    "egg-scripts": "^2.10.0",
+    "eslint": "^7.2.0",
+    "graphql-request": "^2.0.0",
+    "isomorphic-fetch": "^2.2.1",
+    "midway": "^1.0.0",
+    "moment": "^2.26.0"
+  },
+  "devDependencies": {
+    "@types/koa-bodyparser": "^4.3.0",
+    "@types/mocha": "^5.2.7",
+    "@types/node": "^10.5.5",
+    "cross-env": "^6.0.0",
+    "egg-ci": "^1.8.0",
+    "eslint-config-airbnb-base": "^14.2.0",
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-vue": "^6.2.2",
+    "midway-bin": "1",
+    "midway-mock": "1",
+    "ts-node": "^8.3.0",
+    "tslib": "^1.8.1",
+    "tslint": "^5.11.0",
+    "tslint-midway-contrib": "1",
+    "typescript": "^3.5.0"
+  },
+  "engines": {
+    "node": ">=10.16.0"
+  },
+  "scripts": {
+    "start": "egg-scripts start --daemon --title=midway-server-my_first_midway_project --framework=midway --ts",
+    "stop": "egg-scripts stop --title=midway-server-my_first_midway_project",
+    "start_build": "npm run build && cross-env NODE_ENV=development midway-bin dev",
+    "clean": "midway-bin clean",
+    "dev": "cross-env NODE_ENV=local midway-bin dev  --port 7001 --ts",
+    "debug": "cross-env NODE_ENV=local midway-bin debug --ts",
+    "test": "npm run lint && midway-bin test --ts",
+    "cov": "midway-bin cov --ts",
+    "lint": "eslint src --fix --ext .ts",
+    "ci": "npm run cov",
+    "build": "midway-bin build -c",
+    "autod": "midway-bin autod"
+  },
+  "ci": {
+    "version": "10"
+  },
+  "midway-bin-clean": [
+    ".vscode/.tsbuildinfo",
+    "dist"
+  ],
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "anonymous",
+  "license": "MIT"
+}
