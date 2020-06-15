@@ -10,12 +10,14 @@
     "egg-graphql": "^2.8.0",
     "egg-scripts": "^2.10.0",
     "eslint": "^7.2.0",
+    "graphql": "^15.1.0",
     "graphql-request": "^2.0.0",
     "isomorphic-fetch": "^2.2.1",
     "midway": "^1.0.0",
     "moment": "^2.26.0"
   },
   "devDependencies": {
+    "@graphql-codegen/cli": "1.15.3",
     "@types/koa-bodyparser": "^4.3.0",
     "@types/mocha": "^5.2.7",
     "@types/node": "^10.5.5",
@@ -30,7 +32,15 @@
     "tslib": "^1.8.1",
     "tslint": "^5.11.0",
     "tslint-midway-contrib": "1",
-    "typescript": "^3.5.0"
+    "typescript": "^3.5.0",
+    "@graphql-codegen/typescript": "1.15.3",
+    "@graphql-codegen/typescript-operations": "1.15.3",
+    "@graphql-codegen/typescript-resolvers": "1.15.3",
+    "@graphql-codegen/typescript-mongodb": "1.15.3",
+    "@graphql-codegen/typescript-graphql-files-modules": "1.15.3",
+    "@graphql-codegen/typescript-document-nodes": "1.15.3",
+    "@graphql-codegen/fragment-matcher": "1.15.3",
+    "@graphql-codegen/introspection": "1.15.3"
   },
   "engines": {
     "node": ">=10.16.0"
@@ -47,7 +57,8 @@
     "lint": "eslint src --fix --ext .ts",
     "ci": "npm run cov",
     "build": "midway-bin build -c",
-    "autod": "midway-bin autod"
+    "autod": "midway-bin autod",
+    "codegen": "graphql-codegen --config codegen.yml"
   },
   "ci": {
     "version": "10"
@@ -60,6 +71,7 @@
     "type": "git",
     "url": ""
   },
+  "eslintIgnore": [ "src/generated" ],
   "author": "anonymous",
   "license": "MIT"
 }

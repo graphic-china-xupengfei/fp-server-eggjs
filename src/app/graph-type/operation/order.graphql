@@ -1,0 +1,6 @@
+query findUser($userId: ID!) {
+  order(id: $userId) {
+    id
+    name
+  }
+}

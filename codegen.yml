@@ -1,0 +1,18 @@
+overwrite: true
+schema: https://29ff1f33bb3eed2ce31ae46fdd1cc7c0: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@xupengfei.myshopify.com/admin/api/2020-04/graphql.json
+
+# documents: "src/app/graph-type/operation/order.graphql"
+
+generates:
+  src/generated/graphql.ts:
+    plugins:
+      - "typescript"
+      # - "typescript-operations"
+      # - "typescript-resolvers"
+      # - "typescript-mongodb"
+      # - "typescript-graphql-files-modules"
+      # - "typescript-document-nodes"
+      # - "fragment-matcher"
+  # ./graphql.schema.json:
+  #   plugins:
+  #     - "introspection"
