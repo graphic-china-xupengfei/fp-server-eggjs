@@ -1,4 +1,4 @@
-import shopifyAuth from '@shopify/koa-shopify-auth';
+import shopifyAuth from '@graphic-china/koa-shopify-auth';
 import 'isomorphic-fetch';
 
 export default shopifyAuth;

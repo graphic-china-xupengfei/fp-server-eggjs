@@ -10,7 +10,7 @@ export default class UserController {
   ctx: Context;
 
   @inject('userService')
-  service: IUserService;
+  service: IUserService
 
   @get('/:id')
   async getUser(): Promise<void> {

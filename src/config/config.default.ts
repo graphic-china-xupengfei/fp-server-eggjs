@@ -1,4 +1,9 @@
 import { EggAppConfig, EggAppInfo, PowerPartial } from 'midway';
+import dotenv from 'dotenv';
+
+dotenv.config({
+  path: process.env.NODE_ENV === 'development' ? '.env.dev' : '.env.prod',
+});
 
 export type DefaultConfig = PowerPartial<EggAppConfig>;
 
@@ -7,15 +12,12 @@ export default (appInfo: EggAppInfo) => {
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = `${appInfo.name}_1591971224868_9040`;
-  const SHOPIFY_API_KEY = '42e50ceb9dc37cdc65db499b3ff87b17';
-  const SHOPIFY_API_SECRET = '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';
-  const SCOPE = 'write_products, write_orders';
   // add your config here
   config.middleware = [
-    'example',
+    // 'history',
     'shopify',
     'verify',
-    'graphql',
+    // 'graphql',
   ];
   config.verify = {
     match(ctx) {
@@ -25,9 +27,9 @@ export default (appInfo: EggAppInfo) => {
       return false;
     },
   };
-  config.graphql = {
-    router: '/graphql1',
-  };
+  // config.graphql = {
+  //   router: '/graphql1',
+  // };
   config.security = {
     xframe: {
       enable: false,
@@ -38,15 +40,26 @@ export default (appInfo: EggAppInfo) => {
     secure: true,
     sameSite: 'None',
   };
+  config.cors = { // 解决跨域访问
+    allowMethods: 'GET,HEAD,PUT,POST,DELETE,PATCH,OPTIONS',
+    credentials: true,
+    origin: () => '*', // 这边不能为*号，需要指定明确的、与请求网页一致的域名
+  };
+
+  // 静态文件配置
+  config.static = {
+    prefix: '/',
+  };
   config.shopify = {
-    apiKey: SHOPIFY_API_KEY,
-    secret: SHOPIFY_API_SECRET,
+    appAddress: process.env.APP_ADDRESS,
+    apiKey: process.env.SHOPIFY_API_KEY,
+    secret: process.env.SHOPIFY_API_SECRET,
     accessMode: 'online',
-    scopes: [SCOPE],
+    scopes: [process.env.SCOPE],
     afterAuth(ctx) {
       const { accessToken } = ctx.session;
       console.log(accessToken);
-      ctx.redirect(`/${accessToken}`);
+      ctx.redirect('/');
     },
 
   };

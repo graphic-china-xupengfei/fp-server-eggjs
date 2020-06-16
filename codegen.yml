@@ -6,7 +6,8 @@ schema: https://29ff1f33bb3eed2ce31ae46fdd1cc7c0:shppa_3e04a6616f8a0c5afab5be1e6
 generates:
   src/generated/graphql.ts:
     plugins:
-      - "typescript"
+      - typescript
+      - typescript-vue-apollo
       # - "typescript-operations"
       # - "typescript-resolvers"
       # - "typescript-mongodb"

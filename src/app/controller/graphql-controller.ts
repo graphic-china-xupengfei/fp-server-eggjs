@@ -17,7 +17,7 @@ export default class GraphqlController {
 
   @get('/')
   async get(): Promise<void> {
-    this.logger.info('graphql body:', this.ctx.body);
+    this.logger.info('graphql body:', this.ctx.host);
     this.logger.info('session:', this.ctx.session.accessToken);
     this.ctx.body = { success: true, message: 'OK' };
   }

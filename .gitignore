@@ -1,4 +1,7 @@
 logs/
+public/
+.env.dev
+.env.prod
 npm-debug.log
 yarn-error.log
 node_modules/
