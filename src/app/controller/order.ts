@@ -1,7 +1,7 @@
 import {
   Context, controller, get, inject, provide,
 } from 'midway';
-import { IOrderService, IOrderResult } from '../../interface/order';
+import { IOrderService, IOrderResult } from '../interface/order';
 
 @provide()
 @controller('/order')
