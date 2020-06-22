@@ -24,7 +24,6 @@ export default class GraphqlController {
 
   @post('/')
   async query(): Promise<void> {
-    this.logger.info('SHOP: ', this.ctx.session.shop);
     this.logger.info('ACCESS_TOKEN: ', this.ctx.session.accessToken);
     const result = await this.service.query(this.ctx.request.body.query);
     this.ctx.body = { success: true, message: 'OK', data: result };

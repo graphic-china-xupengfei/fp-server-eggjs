@@ -2,7 +2,7 @@ import { EggAppConfig, EggAppInfo, PowerPartial } from 'midway';
 import dotenv from 'dotenv';
 
 dotenv.config({
-  path: process.env.NODE_ENV === 'production' ? '.env.prod' : '.env.dev',
+  path: process.env.NODE_ENV === 'development' ? '.env.dev' : '.env.prod',
 });
 
 export type DefaultConfig = PowerPartial<EggAppConfig>;
@@ -27,9 +27,7 @@ export default (appInfo: EggAppInfo) => {
       return false;
     },
   };
-  // config.graphql = {
-  //   router: '/graphql1',
-  // };
+
   config.security = {
     xframe: {
       enable: false,
@@ -53,6 +51,8 @@ export default (appInfo: EggAppInfo) => {
   config.shopify = {
     shop: process.env.SHOP,
     accessToken: process.env.ACCESS_TOKEN,
+    privateApiKey: process.env.PRIVATE_API_KEY,
+    privatePassword: process.env.PRIVATE_PASSWORD,
     appAddress: process.env.APP_ADDRESS,
     apiKey: process.env.SHOPIFY_API_KEY,
     secret: process.env.SHOPIFY_API_SECRET,
